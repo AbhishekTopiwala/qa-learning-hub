@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Path Test</title>
+</head>
+<body>
+    <h1>Testing Paths</h1>
+    <script>
+        console.log('Current pathname:', window.location.pathname);
+        console.log('Testing path detection...');
+        
+        const path = window.location.pathname;
+        let basePath;
+        
+        if (path.includes('/pages/learn/') || path.includes('/pages/tools/')) {
+            basePath = '../../';
+        } else if (path.includes('/pages/')) {
+            basePath = '../';
+        } else {
+            basePath = '';
+        }
+        
+        console.log('Detected base path:', basePath);
+        document.write('<p>Current path: ' + path + '</p>');
+        document.write('<p>Base path: ' + basePath + '</p>');
+    </script>
+</body>
+</html>
