@@ -3,6 +3,20 @@
 // Optimized & Feature-Rich
 // ================================================
 
+// ================== LOADING OPTIMIZATION ==================
+// Ensure this runs immediately to prevent white screen
+function onPageLoad() {
+  document.body.classList.add('loaded');
+}
+
+if (document.readyState === 'complete') {
+  onPageLoad();
+} else {
+  window.addEventListener('load', onPageLoad);
+  // Fallback in case load event is missed or takes too long
+  setTimeout(onPageLoad, 3000); 
+}
+
 // Initialize after components (header/footer) are loaded
 function initializeApp() {
   
@@ -112,7 +126,7 @@ function initializeApp() {
       const accordionItem = this.parentElement;
       const isActive = accordionItem.classList.contains('active');
       
-      // Close all accordion items
+      // Close all accordion items for a cleaner look
       document.querySelectorAll('.accordion-item').forEach(item => {
         item.classList.remove('active');
       });
@@ -204,23 +218,49 @@ function initializeApp() {
   });
   
   // ================== SCROLL ANIMATIONS ==================
-  // Fade in elements on scroll (performance optimized)
   const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.01,  // Low threshold for tall sections on mobile
     rootMargin: '0px 0px -50px 0px'
   };
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
+        entry.target.classList.add('active');
+        // If it's a grid, we might want to stagger children
+        if (entry.target.classList.contains('card-grid')) {
+          const children = entry.target.querySelectorAll('.card');
+          children.forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.1}s`;
+            child.classList.add('active');
+          });
+        }
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
   
-  // Observe cards, roadmap levels, and other elements
-  document.querySelectorAll('.card, .roadmap-level, .bug-example').forEach(el => {
+  // Observe sections and grids
+  document.querySelectorAll('section, .card-grid, .reveal, .reveal-left, .stagger-reveal').forEach(el => {
+    // Check if element is already in viewport
+    const rect = el.getBoundingClientRect();
+    const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    // If already in viewport, activate immediately to prevent fade-out
+    if (isInViewport) {
+      el.classList.add('active');
+    } else {
+      // Add the appropriate reveal class if not already present
+      if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('stagger-reveal') && el.tagName === 'SECTION') {
+         el.classList.add('reveal');
+      }
+      
+      // For stagger-reveal elements below the fold, mark as observed
+      if (el.classList.contains('stagger-reveal')) {
+        el.classList.add('observed');
+      }
+    }
+    
     observer.observe(el);
   });
   
@@ -326,7 +366,7 @@ function initializeApp() {
         const currentIndex = buttons.indexOf(this);
         let nextIndex;
         
-        if (e.key === 'Arrow Right') {
+        if (e.key === 'ArrowRight') {
           nextIndex = (currentIndex + 1) % buttons.length;
         } else {
           nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
@@ -338,10 +378,20 @@ function initializeApp() {
     });
   });
   
-  // ================== LOADING OPTIMIZATION ==================
-  // Mark page as fully loaded for any CSS transitions
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
+
+
+  // ================== MICRO-INTERACTIONS ==================
+  const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-secondary, .btn-outline');
+  buttons.forEach(btn => {
+    btn.addEventListener('mousedown', () => {
+      btn.style.transform = 'scale(0.95)';
+    });
+    btn.addEventListener('mouseup', () => {
+      btn.style.transform = '';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
   });
   
   // ================== SCROLL PROGRESS INDICATOR (OPTIONAL) ==================
@@ -370,6 +420,29 @@ function initializeApp() {
     });
   }
   
+  // ================== FEEDBACK SYSTEM ==================
+  window.showFeedback = function(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `feedback-toast ${type}`;
+    const icon = type === 'success' ? '✓' : '✕';
+    toast.innerHTML = `<span class="feedback-icon">${icon}</span> <span class="feedback-message">${message}</span>`;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(20px)';
+      toast.style.transition = 'all 0.4s ease';
+      setTimeout(() => toast.remove(), 400);
+    }, 3000);
+  };
+
+  // Example: Attach feedback to specific buttons (like "Copy" or "Submit")
+  document.querySelectorAll('.copy-btn, .btn-submit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showFeedback('Action completed successfully!');
+    });
+  });
+
   // ================== CONSOLE MESSAGE ==================
   console.log('%c🚀 QA Learning Hub', 'color: #2563eb; font-size: 20px; font-weight: bold;');
   console.log('%cBuilt with ❤️ for aspiring QA professionals', 'color: #10b981; font-size: 14px;');

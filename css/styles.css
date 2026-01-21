@@ -665,6 +665,21 @@ code {
   }
 }
 
+/* Global Page Load Animation */
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+main,
+.hero {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
 @media (min-width: 640px) {
   .hero h1 {
     font-size: var(--font-size-5xl);
@@ -797,7 +812,7 @@ code {
 
 .card:hover {
   box-shadow: var(--shadow-xl);
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: var(--color-primary-light);
 }
 
@@ -1039,7 +1054,7 @@ code {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
 
   to {
@@ -1047,6 +1062,202 @@ code {
     transform: translateY(0);
   }
 }
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================== SKELETON LOADER ================== */
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-bg-gray) 25%,
+      #e5e7eb 50%,
+      var(--color-bg-gray) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: var(--border-radius);
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.skeleton * {
+  visibility: hidden;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ================== SCROLL REVEAL ================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== MICRO-INTERACTIONS ================== */
+.btn:active {
+  transform: scale(0.96) !important;
+  transition: transform 0.1s ease;
+}
+
+.nav-link:active {
+  transform: scale(0.95);
+}
+
+/* Success/Error Feedback */
+.feedback-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  background: white;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10000;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 4px solid var(--color-primary);
+}
+
+.feedback-toast.success {
+  border-left-color: var(--color-secondary);
+}
+
+.feedback-toast.error {
+  border-left-color: #ef4444;
+}
+
+/* Accordion Smooth Transition */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.accordion-item.active .accordion-content {
+  grid-template-rows: 1fr;
+}
+
+.accordion-body {
+  min-height: 0;
+  padding: 0 var(--spacing-lg);
+  transition: padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-body {
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+/* ================== STAGGERED REVEAL ================== */
+/* Only hide children when explicitly marked for observation */
+.stagger-reveal:not(.observed)>* {
+  /* Content visible by default */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-reveal.observed>* {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stagger-reveal.observed.active>* {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Manual delay generation for up to 10 items */
+.stagger-reveal.active>*:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.stagger-reveal.active>*:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.stagger-reveal.active>*:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.stagger-reveal.active>*:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.stagger-reveal.active>*:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.stagger-reveal.active>*:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.stagger-reveal.active>*:nth-child(7) {
+  transition-delay: 0.7s;
+}
+
+.stagger-reveal.active>*:nth-child(8) {
+  transition-delay: 0.8s;
+}
+
+.stagger-reveal.active>*:nth-child(9) {
+  transition-delay: 0.9s;
+}
+
+.stagger-reveal.active>*:nth-child(10) {
+  transition-delay: 1.0s;
+}
+
 
 /* ================== ACCORDION / FAQ ================== */
 .accordion {
