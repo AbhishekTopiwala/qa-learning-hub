@@ -7,16 +7,56 @@
     <meta name="description"
         content="Complete guide to Manual Testing - Learn SDLC, STLC, test case writing, bug reporting, and testing techniques.">
     <title>Manual Testing Guide - Complete QA Fundamentals</title>
-    <link rel="icon" type="image/png" href="../../favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
-<body>
+<body class="loading">
 
     <!-- Header Placeholder (loaded from includes/header.html) -->
 
 
-    <div id="header-placeholder"></div>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container">
+            <div class="nav">
+                <a href="../../index.html" class="logo">
+                    <img src="../../favicon.svg" alt="QA Learning Hub Logo" class="logo-icon">
+                    <span class="logo-text">QA Learning Hub</span>
+                </a>
+
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../../pages/roadmap.html" class="nav-link">QA Roadmap</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Learn</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="../../pages/learn/manual-testing.html"
+                                    class="dropdown-link">Manual Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/automation.html"
+                                    class="dropdown-link">Automation Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/api-testing.html"
+                                    class="dropdown-link">API Testing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/practice.html" class="nav-link">Practice Zone</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/interview.html" class="nav-link">Interview Prep</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/resume.html" class="nav-link">Resume & Career</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/about.html" class="nav-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
 
     <!-- Page Header -->
     <section class="hero">
@@ -290,7 +330,7 @@
                 <h2>⚖️ Severity vs Priority</h2>
                 <p>Understanding the difference between severity and priority helps in effective bug management.</p>
 
-                <div class="card-grid">
+                <div class="card-grid-2">
                     <div class="card">
                         <h3>Severity</h3>
                         <p><strong>Definition:</strong> Impact of the bug on the system's functionality</p>
@@ -338,7 +378,7 @@
                 <p>Black box testing focuses on inputs and outputs without knowing the internal code. These techniques
                     help create effective test cases.</p>
 
-                <div class="card-grid">
+                <div class="card-grid-2x2">
                     <div class="card">
                         <h4>1. Equivalence Partitioning</h4>
                         <p>Divide input data into groups (partitions) that behave similarly. Test one value from each
@@ -385,18 +425,14 @@
             </div>
 
             <!-- Next Steps -->
-            <div class="card" style="background: linear-gradient(135deg, #2563eb 0%, #10b981 100%); color: white;">
-                <h3 style="color: white;">✅ Next Steps</h3>
-                <p style="color: white;">You've learned the manual testing fundamentals! Here's what to do next:</p>
+            <div class="card">
+                <h3>✅ Next Steps</h3>
+                <p>You've learned the manual testing fundamentals! Here's what to do next:</p>
                 <ul>
-                    <li style="color: white;">Practice writing test cases for real websites or apps</li>
-                    <li style="color: white;">Check out the <a href="bug-library.html"
-                            style="color: white; text-decoration: underline;">Bug
-                            Report Library</a> for real examples</li>
-                    <li style="color: white;">Test your skills in the <a href="../tools/practice.html"
-                            style="color: white; text-decoration: underline;">Practice Zone</a></li>
-                    <li style="color: white;">Move to Level 2: <a href="api-testing.html"
-                            style="color: white; text-decoration: underline;">Learn API Testing</a></li>
+                    <li>Practice writing test cases for real websites or apps</li>
+                    <li>Check out the <a href="bug-library.html">Bug Report Library</a> for real examples</li>
+                    <li>Test your skills in the <a href="../tools/practice.html">Practice Zone</a></li>
+                    <li>Move to Level 2: <a href="api-testing.html">Learn API Testing</a></li>
                 </ul>
             </div>
 
@@ -406,9 +442,23 @@
     <!-- Footer Placeholder (loaded from includes/footer.html) -->
 
 
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="../../pages/about.html">About</a></li>
+                <li><a href="../../pages/roadmap.html">Roadmap</a></li>
+                <li><a href="../../pages/tools/practice.html">Practice</a></li>
+                <li><a href="../../pages/tools/interview.html">Interview</a></li>
+                <li><a href="../../pages/learn/manual-testing.html">Manual Testing</a></li>
+                <li><a href="../../pages/learn/api-testing.html">API Testing</a></li>
+            </ul>
+            <p class="footer-text">© 2026 QA Learning Hub. Built by QA professionals, for QA learners.</p>
+        </div>
+    </footer>
 
-    <script src="../../js/components.js"></script>
+
+
 
 
     <script src="../../js/main.js"></script>

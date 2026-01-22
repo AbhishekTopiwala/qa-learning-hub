@@ -3,6 +3,14 @@
 // Optimized & Feature-Rich
 // ================================================
 
+// ================== DARK MODE INITIALIZATION ==================
+// Must run immediately to prevent flash
+(function() {
+  const savedTheme = localStorage.getItem('theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', savedTheme);
+})();
+
 // ================== LOADING OPTIMIZATION ==================
 // Ensure this runs immediately to prevent white screen
 function onPageLoad() {
@@ -215,6 +223,54 @@ function initializeApp() {
       top: 0,
       behavior: 'smooth'
     });
+  });
+  
+  // ================== DARK MODE TOGGLE ==================
+  // Create theme toggle button
+  const themeToggle = document.createElement('button');
+  themeToggle.className = 'theme-toggle';
+  themeToggle.setAttribute('aria-label', 'Toggle theme');
+  themeToggle.setAttribute('title', 'Toggle dark/light mode');
+  document.body.appendChild(themeToggle);
+  
+  // Toggle theme function
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    // Add transitioning class for animation
+    themeToggle.classList.add('transitioning');
+    
+    // Change theme
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Remove transitioning class after animation
+    setTimeout(() => {
+      themeToggle.classList.remove('transitioning');
+    }, 600);
+    
+    // Show feedback
+    if (typeof showFeedback === 'function') {
+      showFeedback(`${newTheme === 'dark' ? '🌙 Dark' : '☀️ Light'} mode enabled`);
+    }
+  }
+  
+  themeToggle.addEventListener('click', toggleTheme);
+  
+  // Keyboard shortcut for theme toggle (Ctrl/Cmd + Shift + D)
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'D') {
+      e.preventDefault();
+      toggleTheme();
+    }
+  });
+  
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
   });
   
   // ================== SCROLL ANIMATIONS ==================
@@ -449,14 +505,5 @@ function initializeApp() {
   
 }
 
-// Wait for components to load, then initialize
-window.addEventListener('componentsLoaded', initializeApp);
-
-// Fallback: if components.js is not used, initialize on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Check if components are being used
-  if (!document.getElementById('header-placeholder')) {
-    initializeApp();
-  }
-});
-
+// Initialize on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', initializeApp);

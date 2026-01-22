@@ -7,16 +7,56 @@
     <meta name="description"
         content="QA resume tips, career growth path, and how to build a professional Software QA resume.">
     <title>QA Resume & Career Guide</title>
-    <link rel="icon" type="image/png" href="../../favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
-<body>
+<body class="loading">
 
     <!-- Header Placeholder (loaded from includes/header.html) -->
 
 
-    <div id="header-placeholder"></div>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container">
+            <div class="nav">
+                <a href="../../index.html" class="logo">
+                    <img src="../../favicon.svg" alt="QA Learning Hub Logo" class="logo-icon">
+                    <span class="logo-text">QA Learning Hub</span>
+                </a>
+
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../../pages/roadmap.html" class="nav-link">QA Roadmap</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Learn</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="../../pages/learn/manual-testing.html"
+                                    class="dropdown-link">Manual Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/automation.html"
+                                    class="dropdown-link">Automation Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/api-testing.html"
+                                    class="dropdown-link">API Testing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/practice.html" class="nav-link">Practice Zone</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/interview.html" class="nav-link">Interview Prep</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/resume.html" class="nav-link">Resume & Career</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/about.html" class="nav-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
 
     <!-- Page Header -->
     <section class="hero">
@@ -131,7 +171,7 @@
             <div class="mb-xl">
                 <h2>💡 Resume Tips</h2>
 
-                <div class="card-grid">
+                <div class="card-grid-2">
                     <div class="card">
                         <h4>✅ DO</h4>
                         <ul>
@@ -242,8 +282,8 @@
                         </ul>
                     </div>
 
-                    <div class="roadmap-level" style="border-left-color: #f59e0b;">
-                        <h3 style="color: #f59e0b;">Level 4: Lead QA / QA Manager (5+ Years)</h3>
+                    <div class="roadmap-level">
+                        <h3>Level 4: Lead QA / QA Manager (5+ Years)</h3>
                         <div class="roadmap-meta">
                             <span><strong>Salary Range:</strong> Leadership level</span>
                         </div>
@@ -298,26 +338,18 @@
             </div>
 
             <!-- Pro Tips -->
-            <div class="card" style="background: linear-gradient(135deg, #2563eb 0%, #10b981 100%); color: white;">
-                <h3 style="color: white;">🚀 Pro Career Tips</h3>
-                <ul style="color: white;">
-                    <li style="color: white;"><strong style="color: white;">Build a portfolio:</strong> GitHub repo with
-                        test cases, bug reports, automation scripts
+            <div class="card">
+                <h3>🚀 Pro Career Tips</h3>
+                <ul>
+                    <li><strong>Build a portfolio:</strong> GitHub repo with test cases, bug reports, automation scripts
                     </li>
-                    <li style="color: white;"><strong style="color: white;">Network:</strong> Connect with QA
-                        professionals on LinkedIn, join QA communities</li>
-                    <li style="color: white;"><strong style="color: white;">Get certified:</strong> ISTQB Foundation is
-                        recognized worldwide</li>
-                    <li style="color: white;"><strong style="color: white;">Stay updated:</strong> Follow QA blogs,
-                        YouTube channels, podcasts</li>
-                    <li style="color: white;"><strong style="color: white;">Don't rush automation:</strong> Master
-                        manual testing first (6-12 months minimum)</li>
-                    <li style="color: white;"><strong style="color: white;">Learn soft skills:</strong> Communication,
-                        collaboration, time management matter</li>
-                    <li style="color: white;"><strong style="color: white;">Side projects:</strong> Test open-source
-                        projects, contribute bug reports</li>
-                    <li style="color: white;"><strong style="color: white;">Ask for feedback:</strong> Continuous
-                        improvement is key in QA career</li>
+                    <li><strong>Network:</strong> Connect with QA professionals on LinkedIn, join QA communities</li>
+                    <li><strong>Get certified:</strong> ISTQB Foundation is recognized worldwide</li>
+                    <li><strong>Stay updated:</strong> Follow QA blogs, YouTube channels, podcasts</li>
+                    <li><strong>Don't rush automation:</strong> Master manual testing first (6-12 months minimum)</li>
+                    <li><strong>Learn soft skills:</strong> Communication, collaboration, time management matter</li>
+                    <li><strong>Side projects:</strong> Test open-source projects, contribute bug reports</li>
+                    <li><strong>Ask for feedback:</strong> Continuous improvement is key in QA career</li>
                 </ul>
             </div>
 
@@ -327,9 +359,23 @@
     <!-- Footer Placeholder (loaded from includes/footer.html) -->
 
 
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="../../pages/about.html">About</a></li>
+                <li><a href="../../pages/roadmap.html">Roadmap</a></li>
+                <li><a href="../../pages/tools/practice.html">Practice</a></li>
+                <li><a href="../../pages/tools/interview.html">Interview</a></li>
+                <li><a href="../../pages/learn/manual-testing.html">Manual Testing</a></li>
+                <li><a href="../../pages/learn/api-testing.html">API Testing</a></li>
+            </ul>
+            <p class="footer-text">© 2026 QA Learning Hub. Built by QA professionals, for QA learners.</p>
+        </div>
+    </footer>
 
-    <script src="../../js/components.js"></script>
+
+
 
 
     <script src="../../js/main.js"></script>

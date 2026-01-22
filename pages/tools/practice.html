@@ -7,16 +7,56 @@
     <meta name="description"
         content="Practice QA skills with test case writing exercises, bug finding challenges, and scenario-based questions.">
     <title>QA Practice Zone - Test Your Skills</title>
-    <link rel="icon" type="image/png" href="../../favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
-<body>
+<body class="loading">
 
     <!-- Header Placeholder (loaded from includes/header.html) -->
 
 
-    <div id="header-placeholder"></div>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container">
+            <div class="nav">
+                <a href="../../index.html" class="logo">
+                    <img src="../../favicon.svg" alt="QA Learning Hub Logo" class="logo-icon">
+                    <span class="logo-text">QA Learning Hub</span>
+                </a>
+
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../../pages/roadmap.html" class="nav-link">QA Roadmap</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Learn</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="../../pages/learn/manual-testing.html"
+                                    class="dropdown-link">Manual Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/automation.html"
+                                    class="dropdown-link">Automation Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/api-testing.html"
+                                    class="dropdown-link">API Testing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/practice.html" class="nav-link">Practice Zone</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/interview.html" class="nav-link">Interview Prep</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/resume.html" class="nav-link">Resume & Career</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/about.html" class="nav-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
 
     <!-- Page Header -->
     <section class="hero">
@@ -290,24 +330,18 @@
             </div>
 
             <!-- Real Testing Practice -->
-            <div class="card" style="background: linear-gradient(135deg, #2563eb 0%, #10b981 100%); color: white;">
-                <h3 style="color: white;">🚀 Practice on Real Websites</h3>
-                <p style="color: white;">The best practice is testing real applications. Try these:</p>
-                <ul style="color: white;">
-                    <li style="color: white;"><strong style="color: white;">Test public websites:</strong> Google,
-                        Amazon, YouTube (don't report bugs, just practice
+            <div class="card">
+                <h3>🚀 Practice on Real Websites</h3>
+                <p>The best practice is testing real applications. Try these:</p>
+                <ul>
+                    <li><strong>Test public websites:</strong> Google, Amazon, YouTube (don't report bugs, just practice
                         finding them)</li>
-                    <li style="color: white;"><strong style="color: white;">Test demo apps:</strong> Find open-source
-                        projects on GitHub and test them</li>
-                    <li style="color: white;"><strong style="color: white;">Build your own:</strong> Create a simple app
-                        and test it thoroughly</li>
-                    <li style="color: white;"><strong style="color: white;">Document everything:</strong> Keep your test
-                        cases and bug reports in a portfolio</li>
+                    <li><strong>Test demo apps:</strong> Find open-source projects on GitHub and test them</li>
+                    <li><strong>Build your own:</strong> Create a simple app and test it thoroughly</li>
+                    <li><strong>Document everything:</strong> Keep your test cases and bug reports in a portfolio</li>
                 </ul>
-                <p class="mt-md" style="color: white;"><strong style="color: white;">Pro Tip:</strong> Check out the <a
-                        href="bug-library.html" style="color: white; text-decoration: underline;">Bug Library</a> for
-                    more real-world examples!
-                </p>
+                <p class="mt-md"><strong>Pro Tip:</strong> Check out the <a href="bug-library.html">Bug Library</a> for
+                    more real-world examples!</p>
             </div>
 
         </div>
@@ -316,9 +350,23 @@
     <!-- Footer Placeholder (loaded from includes/footer.html) -->
 
 
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="../../pages/about.html">About</a></li>
+                <li><a href="../../pages/roadmap.html">Roadmap</a></li>
+                <li><a href="../../pages/tools/practice.html">Practice</a></li>
+                <li><a href="../../pages/tools/interview.html">Interview</a></li>
+                <li><a href="../../pages/learn/manual-testing.html">Manual Testing</a></li>
+                <li><a href="../../pages/learn/api-testing.html">API Testing</a></li>
+            </ul>
+            <p class="footer-text">© 2026 QA Learning Hub. Built by QA professionals, for QA learners.</p>
+        </div>
+    </footer>
 
-    <script src="../../js/components.js"></script>
+
+
 
 
     <script src="../../js/main.js"></script>

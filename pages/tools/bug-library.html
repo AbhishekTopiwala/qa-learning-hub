@@ -7,16 +7,56 @@
     <meta name="description"
         content="Real-world bug report examples for Web, Mobile, UI/UX, Gaming, and API testing. Learn how to write effective bug reports.">
     <title>Bug Report Library - Real QA Bug Examples</title>
-    <link rel="icon" type="image/png" href="../../favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
-<body>
+<body class="loading">
 
     <!-- Header Placeholder (loaded from includes/header.html) -->
 
 
-    <div id="header-placeholder"></div>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container">
+            <div class="nav">
+                <a href="../../index.html" class="logo">
+                    <img src="../../favicon.svg" alt="QA Learning Hub Logo" class="logo-icon">
+                    <span class="logo-text">QA Learning Hub</span>
+                </a>
+
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="../../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../../pages/roadmap.html" class="nav-link">QA Roadmap</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Learn</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="../../pages/learn/manual-testing.html"
+                                    class="dropdown-link">Manual Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/automation.html"
+                                    class="dropdown-link">Automation Testing</a></li>
+                            <li class="dropdown-item"><a href="../../pages/learn/api-testing.html"
+                                    class="dropdown-link">API Testing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/practice.html" class="nav-link">Practice Zone</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/interview.html" class="nav-link">Interview Prep</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/tools/resume.html" class="nav-link">Resume & Career</a>
+                    </li>
+                    <li class="nav-item"><a href="../../pages/about.html" class="nav-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
 
     <!-- Page Header -->
     <section class="hero">
@@ -530,9 +570,23 @@
     <!-- Footer Placeholder (loaded from includes/footer.html) -->
 
 
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="../../pages/about.html">About</a></li>
+                <li><a href="../../pages/roadmap.html">Roadmap</a></li>
+                <li><a href="../../pages/tools/practice.html">Practice</a></li>
+                <li><a href="../../pages/tools/interview.html">Interview</a></li>
+                <li><a href="../../pages/learn/manual-testing.html">Manual Testing</a></li>
+                <li><a href="../../pages/learn/api-testing.html">API Testing</a></li>
+            </ul>
+            <p class="footer-text">© 2026 QA Learning Hub. Built by QA professionals, for QA learners.</p>
+        </div>
+    </footer>
 
-    <script src="../../js/components.js"></script>
+
+
 
 
     <script src="../../js/main.js"></script>
