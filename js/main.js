@@ -55,10 +55,15 @@ function initializeApp() {
     });
   }
   
-  // Close mobile menu when clicking a link
-  const navLinks = document.querySelectorAll('.nav-link');
+  // Close mobile menu when clicking a link (but not dropdown toggles)
+  const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      // Don't close if it's a dropdown toggle (check parent or href)
+      if (link.parentElement.classList.contains('dropdown') && link.getAttribute('href') === '#') {
+        return;
+      }
+      
       if (navMenu && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
         body.style.overflow = '';
@@ -80,11 +85,19 @@ function initializeApp() {
   
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', function(e) {
-      e.preventDefault();
+      // Always prevent default for dropdown toggles
+      if (this.getAttribute('href') === '#') {
+        e.preventDefault();
+      }
+
+      // Logic check: if on desktop, hover usually handles it, but click is fine too.
+      // However, to avoid double-toggling if hover is active, we can check computed style or just toggle.
+      // A simple class toggle is robust.
+      
       const dropdown = this.parentElement;
       const dropdownMenu = dropdown.querySelector('.dropdown-menu');
       
-      // Close other dropdowns
+      // Close other dropdowns (useful for both mobile and desktop click interactions)
       document.querySelectorAll('.nav-item.dropdown').forEach(item => {
         if (item !== dropdown) {
           item.classList.remove('active');

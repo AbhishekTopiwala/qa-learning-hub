@@ -477,6 +477,30 @@ code {
   transition: transform var(--transition-base);
 }
 
+@media (max-width: 768px) {
+  .nav {
+    min-height: 60px;
+    gap: var(--spacing-md);
+  }
+
+  .logo {
+    font-size: var(--font-size-lg);
+    gap: var(--spacing-xs);
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .logo {
+    font-size: var(--font-size-lg);
+    /* Keep logo compact on tablets/small laptops */
+  }
+}
+
 .logo:hover .logo-icon {
   transform: rotate(-10deg) scale(1.1);
 }
@@ -665,11 +689,19 @@ code {
 /* Mobile Dropdown Adjustments */
 .nav-menu.active .dropdown-menu {
   position: static;
+  display: none;
+  /* Controlled by .show class */
   box-shadow: none;
   background: rgba(99, 102, 241, 0.05);
   margin-top: var(--spacing-xs);
-  margin-left: var(--spacing-md);
+  margin-left: var(--spacing-sm);
   border: 1px solid rgba(99, 102, 241, 0.1);
+  width: auto;
+  min-width: 0;
+}
+
+.nav-menu.active .dropdown-menu.show {
+  display: block;
 }
 
 /* Desktop Dropdown */
@@ -735,7 +767,7 @@ code {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation (Compact Mode: 768px - 1200px) */
 @media (min-width: 768px) {
   .hamburger {
     display: none;
@@ -744,7 +776,8 @@ code {
   .nav-menu {
     display: flex;
     flex-direction: row;
-    gap: var(--spacing-xs);
+    gap: 0;
+    /* No gap, rely on padding */
     align-items: center;
   }
 
@@ -762,12 +795,26 @@ code {
   }
 
   .nav-link {
+    padding: 0.5rem 0.5rem;
+    /* Minimal padding */
+    font-size: 0.75rem;
+    /* Smaller font (12px) */
+  }
+}
+
+/* Normal Desktop Navigation (1200px+) */
+@media (min-width: 1200px) {
+  .nav-menu {
+    gap: var(--spacing-sm);
+  }
+
+  .nav-link {
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-size-sm);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1400px) {
   .logo {
     font-size: var(--font-size-2xl);
   }
@@ -971,6 +1018,12 @@ code {
 }
 
 /* Utility classes */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
 .mt-md {
   margin-top: var(--spacing-md);
 }
